@@ -43,3 +43,45 @@ CREATE TABLE detallefactura (
     REFERENCES producto(id_producto)
 );
 
+-- Insertar 5 clientes
+INSERT INTO cliente (id_cliente, nombre, correo, telefono) VALUES
+('1001234567', 'Camilo López', 'camilo.lopez@example.com', '3014567890'),
+('1007654321', 'Andrea Ramírez', 'andrea.ramirez@example.com', '3156789012'),
+('1012345678', 'Juan Pérez', 'juan.perez@example.com', '3207890123'),
+('1023456789', 'Diana Torres', 'diana.torres@example.com', '3108901234'),
+('1034567890', 'Carlos Mendoza', 'carlos.mendoza@example.com', '3049012345');
+
+-- Insertar 5 productos (medicamentos)
+INSERT INTO producto (nombre, precio, stock) VALUES
+('Acetaminofén 500mg', 5000, 100),
+('Ibuprofeno 400mg', 8000, 80),
+('Amoxicilina 500mg', 12000, 50),
+('Loratadina 10mg', 10000, 60),
+('Omeprazol 20mg', 15000, 40);
+
+-- Insertar 5 facturas
+INSERT INTO factura (id_cliente, total) VALUES
+('1001234567', 18000),
+('1007654321', 26000),
+('1012345678', 15000),
+('1023456789', 30000),
+('1034567890', 22000);
+
+-- Insertar detalles de facturas
+INSERT INTO detallefactura (id_factura, id_producto, cantidad, subtotal) VALUES
+(1, 1, 2, 10000),
+(1, 3, 1, 12000),
+(2, 2, 2, 16000),
+(2, 4, 1, 10000),
+(3, 5, 1, 15000),
+(4, 1, 3, 15000),
+(4, 2, 2, 16000),
+(5, 3, 1, 12000),
+(5, 4, 1, 10000),
+(5, 5, 1, 15000);
+
+-- Verificar inserciones
+SELECT * FROM cliente;
+SELECT * FROM producto;
+SELECT * FROM factura;
+SELECT * FROM detallefactura;
