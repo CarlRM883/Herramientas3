@@ -1,10 +1,9 @@
--- Crear la base de datos
 CREATE DATABASE medicamentos;
 GO
 USE medicamentos;
 GO
 
--- Creación de la tabla cliente
+
 CREATE TABLE cliente (
     id_cliente VARCHAR(20) PRIMARY KEY,  -- La cédula como clave primaria
     nombre VARCHAR(30) NOT NULL,
@@ -12,7 +11,7 @@ CREATE TABLE cliente (
     telefono VARCHAR(20) NOT NULL
 );
 
--- Creación de la tabla producto
+
 CREATE TABLE producto (
     id_producto INT IDENTITY(1,1) PRIMARY KEY,
     nombre VARCHAR(30) NOT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE producto (
     stock INT NOT NULL CHECK (stock >= 0)
 );
 
--- Creación de la tabla factura
+
 CREATE TABLE factura (
     id_factura INT IDENTITY(1,1) PRIMARY KEY,
     id_cliente VARCHAR(20) NOT NULL,  -- Referencia a la cédula en cliente
@@ -30,7 +29,7 @@ CREATE TABLE factura (
     REFERENCES cliente(id_cliente) ON DELETE CASCADE
 );
 
--- Creación de la tabla detallefactura
+
 CREATE TABLE detallefactura (
     id_factura INT NOT NULL,
     id_producto INT NOT NULL,
@@ -43,7 +42,7 @@ CREATE TABLE detallefactura (
     REFERENCES producto(id_producto)
 );
 
--- Insertar 5 clientes
+
 INSERT INTO cliente (id_cliente, nombre, correo, telefono) VALUES
 ('1001234567', 'Camilo López', 'camilo.lopez@example.com', '3014567890'),
 ('1007654321', 'Andrea Ramírez', 'andrea.ramirez@example.com', '3156789012'),
@@ -51,7 +50,7 @@ INSERT INTO cliente (id_cliente, nombre, correo, telefono) VALUES
 ('1023456789', 'Diana Torres', 'diana.torres@example.com', '3108901234'),
 ('1034567890', 'Carlos Mendoza', 'carlos.mendoza@example.com', '3049012345');
 
--- Insertar 5 productos (medicamentos)
+
 INSERT INTO producto (nombre, precio, stock) VALUES
 ('Acetaminofén 500mg', 5000, 100),
 ('Ibuprofeno 400mg', 8000, 80),
@@ -59,7 +58,7 @@ INSERT INTO producto (nombre, precio, stock) VALUES
 ('Loratadina 10mg', 10000, 60),
 ('Omeprazol 20mg', 15000, 40);
 
--- Insertar 5 facturas
+
 INSERT INTO factura (id_cliente, total) VALUES
 ('1001234567', 18000),
 ('1007654321', 26000),
@@ -67,7 +66,7 @@ INSERT INTO factura (id_cliente, total) VALUES
 ('1023456789', 30000),
 ('1034567890', 22000);
 
--- Insertar detalles de facturas
+
 INSERT INTO detallefactura (id_factura, id_producto, cantidad, subtotal) VALUES
 (1, 1, 2, 10000),
 (1, 3, 1, 12000),
@@ -80,7 +79,7 @@ INSERT INTO detallefactura (id_factura, id_producto, cantidad, subtotal) VALUES
 (5, 4, 1, 10000),
 (5, 5, 1, 15000);
 
--- Verificar inserciones
+
 SELECT * FROM cliente;
 SELECT * FROM producto;
 SELECT * FROM factura;
