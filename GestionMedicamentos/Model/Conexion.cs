@@ -6,6 +6,7 @@ namespace GestionMedicamentos.Model
 {
     public class Conexion
     {
+        // Profesor, aqui esta configurado de manera local la conexión a la base de datos, aqui dejamos el aviso en caso de tal de cualquier inconveniente.
         private static string cadenaConexion = "Server=DESKTOP-BPTN76D\\SQLEXPRESS;Database=medicamentos;Trusted_Connection=True;";
 
         public SqlConnection ObtenerConexion()
